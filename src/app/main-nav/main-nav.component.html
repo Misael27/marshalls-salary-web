@@ -1,0 +1,32 @@
+<mat-sidenav-container class="example-container">
+    <mat-sidenav #sidenav [mode]="'side'" fixedInViewport="true" disableClose [opened]="'true'">
+      <mat-toolbar class="primarySancor">
+        <div class="logo-img">
+            <img src="../../assets/logo.jpg" />
+        </div>
+      </mat-toolbar>
+      <mat-nav-list >
+        <ng-container>
+          <div>
+                <ng-container>
+                  <a mat-list-item routerLinkActive="active" routerLink="GestionEmpresas">Employee Salaries</a>
+                  <a mat-list-item routerLinkActive="active" routerLink="DiasDeGracia">Total Salary</a>
+                  <a mat-list-item routerLinkActive="active" routerLink="ConsultarEmpresa">Bonus</a>
+                </ng-container>
+          </div>
+        </ng-container>
+      </mat-nav-list>
+    </mat-sidenav>
+    
+    <mat-sidenav-content>
+        <p>
+            <mat-toolbar>
+                <span>Marshalls Salary System</span>
+            </mat-toolbar>
+         </p>
+        <router-outlet></router-outlet>
+    </mat-sidenav-content>
+</mat-sidenav-container>
+    
+    
+    
