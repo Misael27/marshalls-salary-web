@@ -6,6 +6,7 @@ import { Office } from '../entities/office'
 import { Division } from '../entities/division'
 import { Position } from '../entities/position'
 import { Employee } from '../entities/employee'
+import { EmployeeSalary } from '../entities/EmployeeSalary';
 
 @Injectable()
 export class EmployeeService {
@@ -50,10 +51,10 @@ export class EmployeeService {
     return this.http.post<Employee>(url, employee, {headers});
   }
 
-  getEmployeeList(id: number, filterOption: number): Observable<Employee> {
+  getEmployeeList(id: number, filterOption: number): Observable<EmployeeSalary[]> {
     const headers = new HttpHeaders()
     const url = this.baseUrl + '/Employee';
-    return this.http.get<Employee>(url, {
+    return this.http.get<EmployeeSalary[]>(url, {
       headers, params: {
         Id: id,
         FilterOption: filterOption

@@ -1,3 +1,89 @@
 <mat-card>
     <mat-card-title>Total Salary</mat-card-title>
+    <br/>
+    <div class="content">
+        <h4><b>Select filter:</b></h4>
+        <div class="row">
+            <button mat-raised-button (click)="filter(1)" type="button" [class.button-is-clicked]="filterOption == 1">
+                Same Office and Grade
+            </button>
+            <button class="save-button" mat-raised-button (click)="filter(2)" [class.button-is-clicked]="filterOption == 2">
+                All Offices Same Grade
+            </button>
+            <button class="save-button" mat-raised-button (click)="filter(3)" [class.button-is-clicked]="filterOption == 3">
+                Same Position and Grade
+            </button>
+            <button class="save-button" mat-raised-button (click)="filter(4)" [class.button-is-clicked]="filterOption == 4">
+                All Positions and Grade
+            </button>
+        </div>
+        <br/>
+        <h4><b>Salaries:</b></h4>
+        <div class="table-container mat-elevation-z8">
+            <table mat-table [dataSource]="dataSource" matSort>
+            
+                <!-- employeeCode Column -->
+                <ng-container matColumnDef="employeeCode">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header> Code </th>
+                <td mat-cell *matCellDef="let row"> {{row.employeeCode}} </td>
+                </ng-container>
+            
+                <!-- employeeFullName Column -->
+                <ng-container matColumnDef="employeeFullName">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header> Full Name </th>
+                <td mat-cell *matCellDef="let row"> {{row.employeeFullName}} </td>
+                </ng-container>
+            
+                <!-- division Column -->
+                <ng-container matColumnDef="division">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header> Division </th>
+                <td mat-cell *matCellDef="let row"> {{row.division}} </td>
+                </ng-container>
+            
+                <!-- position Column -->
+                <ng-container matColumnDef="position">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header> Position </th>
+                <td mat-cell *matCellDef="let row"> {{row.position}} </td>
+                </ng-container>
+
+                <!-- beginDate Column -->
+                <ng-container matColumnDef="beginDate">
+                    <th mat-header-cell *matHeaderCellDef mat-sort-header> Begin Date </th>
+                    <td mat-cell *matCellDef="let row"> {{row.beginDate | date :'dd/MM/yyyy'}} </td>
+                </ng-container>
+
+                <!-- birthday Column -->
+                <ng-container matColumnDef="birthday">
+                    <th mat-header-cell *matHeaderCellDef mat-sort-header> Birthday </th>
+                    <td mat-cell *matCellDef="let row"> {{row.birthday | date :'dd/MM/yyyy'}} </td>
+                </ng-container>
+
+                <!-- identificationNumber Column -->
+                <ng-container matColumnDef="identificationNumber">
+                    <th mat-header-cell *matHeaderCellDef mat-sort-header> Identification Number </th>
+                    <td mat-cell *matCellDef="let row"> {{row.identificationNumber}} </td>
+                </ng-container>
+
+                <!-- totalSalary Column -->
+                <ng-container matColumnDef="totalSalary">
+                    <th mat-header-cell *matHeaderCellDef mat-sort-header> Total Salary </th>
+                    <td mat-cell *matCellDef="let row"> {{row.totalSalary | number : '1.2-2'}} </td>
+                </ng-container>
+                
+            
+                <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+                <tr 
+                    mat-row
+                    (click)="filterRow(row.id)"
+                    [class.table-row-is-clicked]="filterRowId == row.id"
+                    *matRowDef="let row; columns: displayedColumns;"></tr>
+
+                <!-- Row shown when there is no matching data. -->
+                <tr class="mat-row" *matNoDataRow>
+                    <td class="mat-cell" colspan="4">No data matching the filter</td>
+                </tr>
+            </table>
+            <mat-paginator [pageSizeOptions]="[5, 10, 25, 100]" aria-label="Select page of users"></mat-paginator>
+        </div>
+    </div>
 </mat-card>

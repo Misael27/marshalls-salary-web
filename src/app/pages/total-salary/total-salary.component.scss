@@ -1,0 +1,22 @@
+table {
+    width: 100%;
+}
+  
+.mat-form-field {
+    font-size: 14px;
+    width: 100%;
+}
+
+.mat-row:hover .mat-cell {
+    border-color: currentColor;
+    cursor: pointer;
+}
+
+.table-row-is-clicked {
+    font-weight: bold;
+}
+
+.button-is-clicked {
+    background-color: #3f51b5;
+    color:white;
+}
