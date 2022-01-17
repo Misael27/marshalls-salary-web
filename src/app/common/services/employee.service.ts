@@ -7,6 +7,8 @@ import { Division } from '../entities/division'
 import { Position } from '../entities/position'
 import { Employee } from '../entities/employee'
 import { EmployeeSalary } from '../entities/EmployeeSalary';
+import { bonusDTO } from '../entities/bonusDTO';
+
 
 @Injectable()
 export class EmployeeService {
@@ -62,10 +64,10 @@ export class EmployeeService {
     });
   }
 
-  getSalaryAverage(employeeCode: string): Observable<Employee> {
+  getSalaryAverage(employeeCode: string): Observable<bonusDTO> {
     const headers = new HttpHeaders()
     const url = this.baseUrl + '/Employee/Average';
-    return this.http.get<Employee>(url, {
+    return this.http.get<bonusDTO>(url, {
       headers, params: {
         EmployeeCode: employeeCode
       } as any, responseType: 'json'
