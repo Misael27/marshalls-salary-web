@@ -1,0 +1,72 @@
+<h1 mat-dialog-title>{{data ? 'Update Salary' : 'Create Salary'}} </h1>
+<div mat-dialog-content>
+  <form [formGroup]="formGroup">
+
+    <mat-form-field>
+        <mat-label>Year</mat-label>
+        <input matInput formControlName="year" placeholder="Year" type="number" min=1950 max=2022>
+        <mat-error
+            *ngIf="!formGroup.get('year').valid && formGroup.get('year').touched">
+            Year is <strong>required</strong>
+        </mat-error>
+    </mat-form-field> 
+    <mat-form-field>
+        <mat-label>Month</mat-label>
+        <input matInput formControlName="month" placeholder="Month" type="number" min=1 max=12>
+        <mat-error
+            *ngIf="!formGroup.get('month').valid && formGroup.get('month').touched">
+            Month is <strong>required</strong>
+        </mat-error>
+    </mat-form-field>
+    <mat-form-field floatLabel="always">
+        <mat-label>Base Salary</mat-label>
+        <input matInput formControlName="baseSalary" type="number" class="example-right-align" placeholder="0">
+        <span matPrefix>$&nbsp;</span>
+        <mat-error
+            *ngIf="!formGroup.get('baseSalary').valid && formGroup.get('baseSalary').touched">
+            Base Salary is <strong>required</strong>
+        </mat-error>
+    </mat-form-field>
+    <mat-form-field floatLabel="always">
+        <mat-label>Production Bonus</mat-label>
+        <input matInput formControlName="productionBonus" type="number" class="example-right-align" placeholder="0">
+        <span matPrefix>$&nbsp;</span>
+        <mat-error
+            *ngIf="!formGroup.get('productionBonus').valid && formGroup.get('productionBonus').touched">
+            Production Bonus is <strong>required</strong>
+        </mat-error>
+    </mat-form-field>
+    <mat-form-field floatLabel="always">
+        <mat-label>Compensation Bonus</mat-label>
+        <input matInput formControlName="compensatioBonus" type="number" class="example-right-align" placeholder="0">
+        <span matPrefix>$&nbsp;</span>
+        <mat-error
+            *ngIf="!formGroup.get('compensatioBonus').valid && formGroup.get('compensatioBonus').touched">
+            Compensatiom Bonus is <strong>required</strong>
+        </mat-error>
+    </mat-form-field>
+    <mat-form-field floatLabel="always">
+        <mat-label>Commission</mat-label>
+        <input matInput formControlName="commission" type="number" class="example-right-align" placeholder="0">
+        <span matPrefix>$&nbsp;</span>
+        <mat-error
+            *ngIf="!formGroup.get('commission').valid && formGroup.get('commission').touched">
+            Commission is <strong>required</strong>
+        </mat-error>
+    </mat-form-field>
+    <mat-form-field floatLabel="always">
+        <mat-label>Contributions</mat-label>
+        <input matInput formControlName="contributions" type="number" class="example-right-align" placeholder="0">
+        <span matPrefix>$&nbsp;</span>
+        <mat-error
+            *ngIf="!formGroup.get('contributions').valid && formGroup.get('contributions').touched">
+            Contributions is <strong>required</strong>
+        </mat-error>
+    </mat-form-field>
+
+    </form>
+</div>
+<div mat-dialog-actions>
+    <button mat-button [disabled]="!isValid()" (click)="onAdd()" color="primary">{{data ? 'Update' : 'Create'}}</button>
+    <button mat-button (click)="onCancel()">Cancel</button>
+</div>
